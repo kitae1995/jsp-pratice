@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<p>
+	#data1 : <%session.getAttribute("data1")%><br>
+	#data2 : <%application.getAttribute("data2")%><br>
+	</p>
+	
+	<hr>
+	<p>
+		#data1 : ${sessionScope.data1 }<br>
+		#data2 : ${data2 } <!--  값이 유일하다면 앞의 sessionScope 생략 가능 -->
+	</p>
+
+</body>
+</html>

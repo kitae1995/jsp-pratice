@@ -31,6 +31,15 @@ public class SessionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getSession().removeAttribute("user_id");
+		response.sendRedirect("/JspBasic/session/session_login.jsp");
+		
+		//모든 세션 데이터 삭제하는법(세션 객체 자체를 무효화)
+		request.getSession().invalidate();
+		
+		//세션의 유효시간 설정 ( 그 페이지에서 있을수 있는 시간 , 은행 홈페이지 마냥 )
+		//대신 새로운 페이지 가면 시간이 초기화됨
+		//	session.setMaxInactiveInterval(60 * 60); 
 	}
 
 	/**

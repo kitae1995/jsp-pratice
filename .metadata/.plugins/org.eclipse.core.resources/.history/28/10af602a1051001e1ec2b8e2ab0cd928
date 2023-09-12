@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<p>
+		# 이름 : ${param.name }<br> <!-- name이란 이름을 가진 객체의 파라미터값을 가져와라 -->
+		# 별명 : ${param.nick }<br> <!-- nick이란 이름을 가진 객체의 파라미터값을 가져와라 -->
+	</p>
+	
+	
+</body>
+</html>

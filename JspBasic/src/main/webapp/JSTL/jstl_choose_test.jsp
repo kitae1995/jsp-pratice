@@ -1,0 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<c:set var="point" value="${param.point}"/>
+
+# 점수 : <strong>${point }점</strong>
+
+<c:choose>
+	<c:when test="${point>=101}">
+	<h3>잘못 입력하셨습니다.</h3>
+	</c:when>
+	
+	<c:when test="${point>=90}">
+		<c:choose>	
+		<c:when test="${point>=95}">
+		<h3>당신은 A+입니다.</h3>
+		</c:when>
+		<c:otherwise>
+		<h3>당신은 A0입니다.</h3>
+		</c:otherwise>
+		</c:choose>
+	</c:when>
+	
+	<c:when test="${point>=80}">
+	<h3>당신은 B입니다.</h3>
+	</c:when>
+	
+	<c:when test="${point>=70}">
+	<h3>당신은 C입니다.</h3>
+	</c:when>
+	
+	<c:when test="${point>=60}">
+	<h3>당신은 D입니다.</h3>
+	</c:when>
+	
+	<c:otherwise>
+	<h3>재수강하세요....</h3>
+	</c:otherwise>
+
+</c:choose>
+
+</body>
+</html>
