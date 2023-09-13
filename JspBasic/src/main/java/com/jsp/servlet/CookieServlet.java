@@ -42,6 +42,14 @@ public class CookieServlet extends HttpServlet {
 			//3. http 응답 시 response 객체에 생성된 쿠키를 탑재해서 클라이언트에게 전송.
 			response.addCookie(loginCoo);
 			
+			//사용자가 아이디 기억하기 체크박스를 체크했는지 여부를 확인.
+			if(request.getParameter("rememberId") != null) { // value값인 true가 옴 체크하지 않앗다면 null
+				Cookie idMemory = new Cookie("rememberId",id); //rememberId라는 이름의 쿠키에 id값이 저장됨 -> idMemory는 이 서블릿에서만 쓰는 이름
+				idMemory.setMaxAge(30); // 30초동안 생존
+				response.addCookie(idMemory);
+			}
+			
+			
 			response.sendRedirect("/JspBasic/cookie/cookie_welcome.jsp"); //위에 addcookie로 탑재해놓은 logincoo가 보낼때 같이감
 			
 			

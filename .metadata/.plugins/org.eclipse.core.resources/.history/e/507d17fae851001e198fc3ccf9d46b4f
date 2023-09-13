@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>서블릿 클래스에 각각 다른 요청 구분해보기</h2>
+	<a href="/JspBasic/user">회원 가입</a>
+	<a href="/JspBasic/user/login">회원 로그인</a>
+	<a href="/JspBasic/user">회원 정보수정</a>
+	<a href="/JspBasic/user">회원 탈퇴</a>
+	
+
+</body>
+</html>
