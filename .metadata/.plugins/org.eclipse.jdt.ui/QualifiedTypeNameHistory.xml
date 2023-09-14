@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletException"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="com.jsp.board.service.IBoardService"/>
+    <fullyQualifiedTypeName name="com.jsp.board.service.RegistService"/>
+    <fullyQualifiedTypeName name="com.jsp.board.service.GetListService"/>
+    <fullyQualifiedTypeName name="com.jsp.board.service.ContentService"/>
+    <fullyQualifiedTypeName name="java.util.concurrent.atomic.AtomicIntegerArray"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.jsp.board.service.SearchService"/>
+    <fullyQualifiedTypeName name="com.jsp.board.model.BoardRepository"/>
+    <fullyQualifiedTypeName name="java.io.Writer"/>
     <fullyQualifiedTypeName name="com.jsp.board.model.BoardVO"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
-    <fullyQualifiedTypeName name="com.jsp.board.model.BoardRepository"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 </qualifiedTypeNameHistroy>

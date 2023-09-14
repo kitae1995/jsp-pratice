@@ -13,11 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jsp.board.model.BoardRepository;
 import com.jsp.board.model.BoardVO;
+import com.jsp.board.service.ContentService;
+import com.jsp.board.service.DeleteService;
+import com.jsp.board.service.GetListService;
+import com.jsp.board.service.IBoardService;
+import com.jsp.board.service.ModifyService;
+import com.jsp.board.service.RegistService;
+import com.jsp.board.service.SearchService;
+import com.jsp.board.service.UpdateService;
 
 
 @WebServlet("*.board")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private IBoardService sv;
+	private RequestDispatcher dp;
        
     
     public BoardController() {
@@ -46,17 +57,10 @@ public class BoardController extends HttpServlet {
 			
 		case "regist":
 			System.out.println("글 등록 요청이 들어옴!");
+			sv = new RegistService();
+			sv.execute(request, response);
 			
-			String writer = request.getParameter("writer");  // writer~content가 하나의 게시글이니까 vo에 묶어서 저장
-			String title = request.getParameter("title");	 //	
-			String content = request.getParameter("content");//
-			BoardVO vo = new BoardVO();
-			vo.setWriter(writer);
-			vo.setTitle(title);
-			vo.setContent(content);
-			vo.setRegDate(LocalDateTime.now());
-			
-			BoardRepository.getInstance().regist(vo); // 글 등록 완료
+			 // 글 등록 완료
 			
 			response.sendRedirect("/JspBasic/list.board");
 			
@@ -72,13 +76,15 @@ public class BoardController extends HttpServlet {
 			
 		case "list":
 			System.out.println("글 목록 요청이 들어옴!");
-			List<BoardVO> list = BoardRepository.getInstance().getList();
+			sv = new GetListService();
+			sv.execute(request, response);
+			//List<BoardVO> list = BoardRepository.getInstance().getList();
 			
 			//DB로부터 전달받은 글 목록을 세션에 넣기는 좀 아깝습니다.
 			//세션 -> 데이터를 계속 유지하기 위한 수단. -> 글 목록을 계속 유지할 필요 X
 			//글 목록은 한 번 응답하면 더 이상 필요 없다. -> 계속 갱신되는 데이터이기 때문.
 			//응답이 나가면 자동으로 소멸하면 request객체를 이용하자
-			request.setAttribute("boardList", list);
+			//request.setAttribute("boardList", list);
 			
 			/*
 			 * 여기서 sendRedirect를 쓰면 안되는 이유.
@@ -96,6 +102,55 @@ public class BoardController extends HttpServlet {
 			RequestDispatcher dp = request.getRequestDispatcher("board/board_list.jsp");
 			dp.forward(request, response);
 			
+			break;
+			
+		
+		case "content":
+			System.out.println("글 상세보기 요청이 들어왔습니다");
+			sv = new ContentService();
+			sv.execute(request, response);
+			
+			dp = request.getRequestDispatcher("board/board_content.jsp");
+			dp.forward(request, response);
+			break;
+			
+		case "modify":
+			System.out.println("글 수정페이지로 이동 요청이 들어왔습니다");
+			sv = new ModifyService();
+			sv.execute(request, response);
+			
+			dp = request.getRequestDispatcher("board/board.modify.jsp");
+			dp.forward(request, response);
+			
+			break;
+			
+		case "update":
+			//새롭게 입력받은 수정값으로 BoardVO 객체를 생성해서 수정을 진행하세요.
+			//(기존 리스트에 존재하는 객체를 새로운 객체로 교체)
+			//수정이 완료되면 수정된 글의 상세보기 페이지로 응답이 나가야함
+			System.out.println("글 수정 요청이 들어옴!");
+			sv = new UpdateService();
+			sv.execute(request, response);
+			
+			response.sendRedirect("/JspBasic/content.board?bId=" + request.getParameter("boardNo"));
+			break;
+			
+		case "delete":
+			System.out.println("글 삭제 요청이 들어옴!");
+			sv = new DeleteService();
+			sv.execute(request, response);
+			
+			response.sendRedirect("/JspBasic/list.board");
+			
+			break;
+			
+		case "search":
+			System.out.println("작성자 검색 요청이 들어옴!");
+			sv = new SearchService();
+			sv.execute(request, response);
+			
+			dp = request.getRequestDispatcher("board/board_list.jsp");
+			dp.forward(request, response);
 			break;
 			
 		}
